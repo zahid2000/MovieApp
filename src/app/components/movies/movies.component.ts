@@ -13,14 +13,15 @@ export class MoviesComponent {
 
   constructor(private movieService: MovieService) {}
 
-ngOnInit(): void {
-  this.getMovies()
-
-}
+  ngOnInit(): void {
+    this.getMovies();
+  }
   onSelect(movie: Movie): void {
     this.selectedMovie = movie;
   }
   getMovies(): void {
-    this.movies = this.movieService.getMovies();
+    this.movieService.getMovies().subscribe((response) => {
+      this.movies = response;
+    });
   }
 }
