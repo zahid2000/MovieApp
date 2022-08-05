@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-
+import{Movie} from '../movie'
 @Component({
     selector:'movies',
     templateUrl:'movies.component.html',
@@ -7,5 +7,11 @@ import { Component } from "@angular/core";
     
 })
 export class MoviesComponent{
+title="Movie List"
 
+movie:Movie={id:1,name:'Movie Name'};
+
+getTtle(){
+    return this.title;
+}
 }
