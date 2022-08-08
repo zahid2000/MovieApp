@@ -24,11 +24,19 @@ export class MoviesComponent {
       this.movies = response;
     });
   }
-  add(name:string,imageUrl:string,description:string){
-   this.movieService.add({
-    name,imageUrl,description
-   } as Movie).subscribe((response)=>{
-    this.movies.push(response)
-   })
+  add(name: string, imageUrl: string, description: string) {
+    this.movieService
+      .add({
+        name,
+        imageUrl,
+        description,
+      } as Movie)
+      .subscribe((response) => {
+        this.movies.push(response);
+      });
+  }
+  delete(movie: Movie): void {
+    this.movies = this.movies.filter((m) => m !== movie);
+    this.movieService.delete(movie).subscribe();
   }
 }

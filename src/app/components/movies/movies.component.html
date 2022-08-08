@@ -12,7 +12,7 @@
         <span class="badge bg-primary rounded-pill">{{ movie.id }}</span>
         {{ movie.name }}
       </p>
-      <button type="button" class="btn-close" aria-label="Close"></button>
+      <button type="button" class="btn-close" (click)="delete(movie)" aria-label="Close"></button>
     </li>
   </ul>
 </div>
