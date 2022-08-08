@@ -24,4 +24,11 @@ export class MoviesComponent {
       this.movies = response;
     });
   }
+  add(name:string,imageUrl:string,description:string){
+   this.movieService.add({
+    name,imageUrl,description
+   } as Movie).subscribe((response)=>{
+    this.movies.push(response)
+   })
+  }
 }

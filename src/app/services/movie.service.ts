@@ -29,4 +29,8 @@ export class MovieService {
     }
     return this.httpClient.put(this.apiMoviesUrl,movie,httpOptions)
   }
+
+  add(movie:Movie):Observable<Movie>{
+    return this.httpClient.post<Movie>(this.apiMoviesUrl,movie)
+  }
 }
