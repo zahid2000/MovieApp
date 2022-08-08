@@ -3,18 +3,23 @@ import { Movie } from '../models/classes/movie';
 import { Movies } from '../models/classes/movie.datasource';
 import { Observable, of } from 'rxjs';
 import { LoggingService } from './logging.service';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
-  constructor(private loggingService: LoggingService) {}
+  private apiMoviesUrl = 'api/movies';
+  constructor(
+    private loggingService: LoggingService,
+    private httpClient: HttpClient
+  ) {}
 
   getMovies(): Observable<Movie[]> {
     this.loggingService.add('MovieService : listing movies');
-    return of(Movies);
+    return this.httpClient.get<Movie[]>(this.apiMoviesUrl);
   }
   getMovie(id: number): Observable<Movie> {
     this.loggingService.add('MovieService: get detail by id=' + id);
-  return of(Movies.find(movie=>movie.id===id)as Movie )
+    return this.httpClient.get<Movie>(this.apiMoviesUrl+'/'+id);
   }
 }
